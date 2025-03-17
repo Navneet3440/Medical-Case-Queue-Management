@@ -1,0 +1,2 @@
+#!/bin/bash
+gunicorn -w ${WEB_WORKERS:=4} -k uvicorn.workers.UvicornWorker main:app --bind ${HOST:=0.0.0.0}:${PORT:=8000} --access-logfile - --error-logfile - --log-level ${LOG_LEVEL:=info} --timeout ${TIMEOUT:=300} --preload

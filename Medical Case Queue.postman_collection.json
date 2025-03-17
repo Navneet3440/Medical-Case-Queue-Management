@@ -1,0 +1,396 @@
+{
+	"info": {
+		"_postman_id": "603648ef-bc07-4037-b750-378ec77752d3",
+		"name": "Medical Case Queue",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "32517180"
+	},
+	"item": [
+		{
+			"name": "Register Hospital",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"hospital_id\": \"hosp_1234\",\n  \"name\": \"City Hospital 5\",\n  \"sla_rules\": {\n    \"emergency\": 30,\n    \"urgent\": 60,\n    \"routine\": 120\n  },\n  \"max_cases_per_specialist\": 10,\n  \"max_cases_per_general\": 20,\n  \"working_hours\": {\n    \"start\": \"09:00\",\n    \"end\": \"17:00\"\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/hospitals",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hospitals"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Hospital",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/hospitals/{{hospital_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hospitals",
+						"{{hospital_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Hospital",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"City Hospital Updated\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/hospitals/{{hospital_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hospitals",
+						"{{hospital_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Hospital",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/hospitals/{{hospital_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"hospitals",
+						"{{hospital_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Doctor",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"doctor_id\": \"doc_123\",\n    \"name\": \"Dr. John Smith\",\n    \"specialty\": \"Cardiology\",\n    \"hospital_id\": \"hosp_1234\",\n    \"availability\": true,\n    \"working_hours\": {\n        \"start\": \"09:00\",\n        \"end\": \"17:00\"\n    },\n    \"current_workload\": 0,\n    \"max_daily_cases\": 10,\n    \"experience_years\": 15,\n    \"patient_rating\": 4.8,\n    \"specialization_tags\": [\"Heart Disease\", \"Angioplasty\", \"Cardiac Surgery\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/doctors",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"doctors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Doctor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/doctors/{{doctor_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"doctors",
+						"{{doctor_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Doctor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Dr. Sumit\",\n  \"specialty\": \"Cardiology\"\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/doctors/{{doctor_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"doctors",
+						"{{doctor_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Doctor",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/doctors/{{doctor_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"doctors",
+						"{{doctor_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Case",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"patient_id\": \"pat_123\",\n  \"age\": 35,\n  \"gender\": \"M\",\n  \"medical_history\": [\"diabetes\"],\n  \"symptoms\": [\"chest pain\"],\n  \"urgency_level\": \"emergency\",\n  \"preferred_doctor\": \"doc_123\",\n  \"arrival_time\": \"2025-03-16T08:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cases/{{hospital_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cases",
+						"{{hospital_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Case",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/cases/{{case_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cases",
+						"{{case_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Case",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"patient_id\": \"pat_123\",\n  \"age\": 35,\n  \"gender\": \"F\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/cases/{{case_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cases",
+						"{{case_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Case",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/cases/{{case_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"cases",
+						"{{case_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Load ML Model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/ml/load?version=20240316083000",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ml",
+						"load"
+					],
+					"query": [
+						{
+							"key": "version",
+							"value": "20240316083000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Train ML Model",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/ml/train",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ml",
+						"train"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Model Versions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/ml/versions",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"ml",
+						"versions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000"
+		},
+		{
+			"key": "hospital_id",
+			"value": "hosp_12345",
+			"type": "string"
+		}
+	]
+}
